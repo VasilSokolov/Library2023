@@ -1,14 +1,14 @@
 package org.utils.test;
 
-public class Animal {
+public class AnimalTest {
 
     private Long id;
     private String name;
 
-    public Animal() {
+    public AnimalTest() {
     }
 
-    public Animal(Long id, String name) {
+    public AnimalTest(Long id, String name) {
         this.id = id;
         this.name = name;
     }

@@ -1,6 +1,6 @@
 package org.utils.test;
 
-public class Cat extends Animal{
+public class Cat extends AnimalTest {
 
     @Override
     public String animalDo(String animalDo) {

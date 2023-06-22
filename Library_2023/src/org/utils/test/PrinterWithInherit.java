@@ -1,6 +1,6 @@
 package org.utils.test;
 
-public class PrinterWithInherit <T extends Animal> {
+public class PrinterWithInherit <T extends AnimalTest> {
 //    public class PrinterWithInherit <T extends Animal & Serializable> {
 
     private T thingToPrint;
