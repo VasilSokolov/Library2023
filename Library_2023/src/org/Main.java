@@ -1,5 +1,7 @@
 package org;
 
+import org.enums.Pizza;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -11,140 +13,151 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Welcome to the Library!");
-    }
 
     public static double price = 0;
-    private List<String> pizzaList = new ArrayList<String>();
+    private List<String> pizzaList = new ArrayList<>();
+
+    public static void main(String[] args) {
+        System.out.println("Welcome to the Library!");
+        pizzaMenu();
+    }
 
     public static void pizzaMenu() {
-        JFrame jFrame = new JFrame ("Order your pizza");
-        jFrame.setLayout (null);
-        jFrame.setSize (500, 360);
-        jFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+        JFrame jFrame = new JFrame("Order your pizza");
+        jFrame.setLayout(null);
+        jFrame.setSize(500, 500);
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JTextArea orders = new JTextArea ("Your order: \n");
-        Border ordersBorder = BorderFactory.createLineBorder (Color.RED);
-        orders.setBorder (ordersBorder);
-        orders.setPreferredSize (new Dimension (150, 500));
-        orders.setBounds (320, 110, 150, 280);
-        jFrame.add (orders);
+        JTextArea orders = new JTextArea("Your order: \n");
+//        addBorder(orders, jFrame, Color.RED, 500, 110, 280);
+        Border orderBorder = BorderFactory.createLineBorder(Color.RED);
+        orders.setBorder(orderBorder);
+        orders.setPreferredSize(new Dimension(150, 500));
+        orders.setBounds(320, 110, 150, 280);
+        jFrame.add(orders);
 
-        JLabel totalPrice = new JLabel ("Total price: " + price + "lv.");
-        Border border = BorderFactory.createLineBorder (Color.BLACK);
-        totalPrice.setBorder (border);
-        totalPrice.setPreferredSize (new Dimension (150, 50));
-        totalPrice.setBounds (320, 50, 150, 50);
-        jFrame.add (totalPrice);
+        JLabel totalPrice = new JLabel("Total price: " + price + "lv.");
+//        addBorder(totalPrice, jFrame, Color.BLACK, 50, 50, 50);
+        Border border = BorderFactory.createLineBorder(Color.BLACK);
+        totalPrice.setBorder(border);
+        totalPrice.setPreferredSize(new Dimension(150, 50));
+        totalPrice.setBounds(320, 50, 150, 50);
+        jFrame.add(totalPrice);
 
-        JLabel margaritta = new JLabel ("Margaritta");
-        margaritta.setPreferredSize (new Dimension (150, 100));
-        margaritta.setHorizontalAlignment (JLabel.LEFT);
-        margaritta.setText ("Margaritta");
-        margaritta.setBounds (50, 30, 150, 100);
-        margaritta.setVisible (true);
-        jFrame.add (margaritta);
+        printPizza(jFrame, Pizza.MARGARITTA, orders, totalPrice, 30, 50, 7.5);
+        printPizza(jFrame, Pizza.QUATTRO_FORMAGGI, orders, totalPrice, 100, 120, 10.5);
+        printPizza(jFrame, Pizza.CHICKEN, orders, totalPrice, 170, 190, 12.5);
+        printPizza(jFrame, Pizza.PEPERONI, orders, totalPrice, 240, 260, 9.5);
 
-        JButton orderMargaritta = new JButton ("Add");
-        orderMargaritta.setBounds (200, 50, 100, 50);
-        orderMargaritta.addActionListener (new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String text = orders.getText ();
-                text += margaritta.getText () + "\n";
-                orders.setText (text);
-                price += 7.5;
-                totalPrice.setText ("Total price: " + price + "lv.");
-            }
-        });
-        jFrame.add (orderMargaritta);
-
-        JLabel quattroformaggi = new JLabel ("Quattro Formaggi");
-        quattroformaggi.setPreferredSize (new Dimension (150, 100));
-        quattroformaggi.setHorizontalAlignment (JLabel.LEFT);
-        quattroformaggi.setText ("Quattro Formaggi");
-        quattroformaggi.setBounds (50, 100, 150, 100);
-        quattroformaggi.setVisible (true);
-        jFrame.add (quattroformaggi);
-
-        JButton orderQuattroFormaggi = new JButton ("Add");
-
-        orderQuattroFormaggi.setBounds (200, 120, 100, 50);
-        orderQuattroFormaggi.addActionListener (new ActionListener () {
-            public void actionPerformed(ActionEvent e) {
-                String text = orders.getText ();
-                text += quattroformaggi.getText () + "\n";
-                orders.setText (text);
-                price += 10.5;
-                totalPrice.setText ("Total price: " + price + "lv.");
-            }
-        });
-        jFrame.add (orderQuattroFormaggi);
-
-        JLabel chicken = new JLabel ("Chicken");
-        chicken.setPreferredSize (new Dimension (150, 100));
-        chicken.setHorizontalAlignment (JLabel.LEFT);
-        chicken.setText ("Chicken");
-        chicken.setBounds (50, 170, 150, 100);
-        chicken.setVisible (true);
-        jFrame.add (chicken);
-
-        JButton orderChicken = new JButton ("Add");
-
-        orderChicken.setBounds (200, 190, 100, 50);
-        orderChicken.addActionListener (new ActionListener () {
-            public void actionPerformed(ActionEvent e) {
-                String text = orders.getText ();
-                text += chicken.getText () + "\n";
-                orders.setText (text);
-                price += 12.5;
-                totalPrice.setText ("Total price: " + price + "lv.");
-            }
-        });
-        jFrame.add (orderChicken);
+//        JLabel margaritta = new JLabel (Pizza.MARGARITTA.getName());
+//        margaritta.setPreferredSize (new Dimension (150, 100));
+//        margaritta.setHorizontalAlignment (JLabel.LEFT);
+//        margaritta.setText (Pizza.MARGARITTA.getName());
+//        margaritta.setBounds (50, 30, 150, 100);
+//        margaritta.setVisible (true);
+//        jFrame.add (margaritta);
+//
+//        JButton orderMargaritta = new JButton ("Add");
+//        orderMargaritta.setBounds (200, 50, 100, 50);
+//        orderMargaritta.addActionListener (new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                String text = orders.getText ();
+//                text += margaritta.getText () + "\n";
+//                orders.setText (text);
+//                price += 7.5;
+//                totalPrice.setText ("Total price: " + price + "lv.");
+//            }
+//        });
+//        jFrame.add (orderMargaritta);
 
 
-        JLabel peperoni = new JLabel ("Peperoni");
-        peperoni.setPreferredSize (new Dimension (150, 100));
-        peperoni.setHorizontalAlignment (JLabel.LEFT);
-        peperoni.setText ("Peperoni");
-        peperoni.setBounds (50, 240, 150, 100);
-        peperoni.setVisible (true);
-        jFrame.add (peperoni);
+//        JLabel quattroformaggi = new JLabel ("Quattro Formaggi");
+//        quattroformaggi.setPreferredSize (new Dimension (150, 100));
+//        quattroformaggi.setHorizontalAlignment (JLabel.LEFT);
+//        quattroformaggi.setText ("Quattro Formaggi");
+//        quattroformaggi.setBounds (50, 100, 150, 100);
+//        quattroformaggi.setVisible (true);
+//        jFrame.add (quattroformaggi);
+//
+//        JButton orderQuattroFormaggi = new JButton ("Add");
+//
+//        orderQuattroFormaggi.setBounds (200, 120, 100, 50);
+//        orderQuattroFormaggi.addActionListener (new ActionListener () {
+//            public void actionPerformed(ActionEvent e) {
+//                String text = orders.getText ();
+//                text += quattroformaggi.getText () + "\n";
+//                orders.setText (text);
+//                price += 10.5;
+//                totalPrice.setText ("Total price: " + price + "lv.");
+//            }
+//        });
+//        jFrame.add (orderQuattroFormaggi);
 
-        JButton orderPeperoni = new JButton ("Add");
 
-        orderPeperoni.setBounds (200, 260, 100, 50);
-        orderPeperoni.addActionListener (new ActionListener () {
-            public void actionPerformed(ActionEvent e) {
-                String text = orders.getText ();
-                text += peperoni.getText () + "\n";
-                orders.setText (text);
-                price += 9.5;
-                totalPrice.setText ("Total price: " + price + "lv.");
-            }
-        });
-        jFrame.add (orderPeperoni);
+//        JLabel chicken = new JLabel ("Chicken");
+//        chicken.setPreferredSize (new Dimension (150, 100));
+//        chicken.setHorizontalAlignment (JLabel.LEFT);
+//        chicken.setText ("Chicken");
+//        chicken.setBounds (50, 170, 150, 100);
+//        chicken.setVisible (true);
+//        jFrame.add (chicken);
+//
+//        JButton orderChicken = new JButton ("Add");
+//
+//        orderChicken.setBounds (200, 190, 100, 50);
+//        orderChicken.addActionListener (new ActionListener () {
+//            public void actionPerformed(ActionEvent e) {
+//                String text = orders.getText ();
+//                text += chicken.getText () + "\n";
+//                orders.setText (text);
+//                price += 12.5;
+//                totalPrice.setText ("Total price: " + price + "lv.");
+//            }
+//        });
+//        jFrame.add (orderChicken);
 
 
-        LocalDate dateNow = LocalDate.now ();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern ("E dd-MM-yyyy");
-        String formattedDate = dateNow.format (formatter);
-        JLabel date = new JLabel (formattedDate);
-        date.setBorder (border);
-        date.setPreferredSize (new Dimension (150, 50));
-        date.setBounds (150, 370, 150, 50);
-        jFrame.add (date);
-        date.setVisible (false);
+//        JLabel peperoni = new JLabel ("Peperoni");
+//        peperoni.setPreferredSize (new Dimension (150, 100));
+//        peperoni.setHorizontalAlignment (JLabel.LEFT);
+//        peperoni.setText ("Peperoni");
+//        peperoni.setBounds (50, 240, 150, 100);
+//        peperoni.setVisible (true);
+//        jFrame.add (peperoni);
+//
+//        JButton orderPeperoni = new JButton ("Add");
+//
+//        orderPeperoni.setBounds (200, 260, 100, 50);
+//        orderPeperoni.addActionListener (new ActionListener () {
+//            public void actionPerformed(ActionEvent e) {
+//                String text = orders.getText ();
+//                text += peperoni.getText () + "\n";
+//                orders.setText (text);
+//                price += 9.5;
+//                totalPrice.setText ("Total price: " + price + "lv.");
+//            }
+//        });
+//        jFrame.add (orderPeperoni);
 
-        JButton purchase = new JButton ("Purchase");
-        purchase.setBounds (200, 340, 100, 50);
-        purchase.addActionListener (new ActionListener () {
+
+        LocalDate dateNow = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E dd-MM-yyyy");
+        String formattedDate = dateNow.format(formatter);
+        JLabel date = new JLabel(formattedDate);
+        date.setBorder(border);
+        date.setPreferredSize(new Dimension(150, 50));
+        date.setBounds(150, 370, 150, 50);
+        jFrame.add(date);
+        date.setVisible(false);
+
+        JButton purchase = new JButton("Purchase");
+        purchase.setBounds(200, 340, 100, 50);
+        purchase.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                orders.setBounds (150, 20, 150, 280);
-                totalPrice.setBounds (150, 310, 150, 50);
-                date.setVisible (true);
+                orders.setBounds(150, 20, 150, 280);
+                totalPrice.setBounds(150, 310, 150, 50);
+                date.setVisible(true);
 
                 jFrame.getContentPane().removeAll();
                 jFrame.getContentPane().repaint();
@@ -155,11 +168,41 @@ public class Main {
             }
         });
 
-        jFrame.add (purchase);
+        jFrame.add(purchase);
+
+        jFrame.setVisible(true);
 
 
-        jFrame.setVisible (true);
+    }
 
+    public static void printPizza(JFrame jFrame, Pizza pizza, JTextArea orders, JLabel totalPrice, int typeY, int orderY, double pizzaPrice) {
+        JLabel pizzaType = new JLabel(pizza.getName());
+        pizzaType.setPreferredSize(new Dimension(150, 100));
+        pizzaType.setHorizontalAlignment(JLabel.LEFT);
+        pizzaType.setText(pizza.getName());
+        pizzaType.setBounds(50, typeY, 150, 100);
+        pizzaType.setVisible(true);
+        jFrame.add(pizzaType);
 
+        JButton orderPizza = new JButton("Add");
+        orderPizza.setBounds(200, orderY, 100, 50);
+        orderPizza.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String text = orders.getText();
+                text += pizzaType.getText() + "\n";
+                orders.setText(text);
+                price += pizzaPrice;
+                totalPrice.setText("Total price: " + price + "lv.");
+            }
+        });
+        jFrame.add(orderPizza);
+    }
+
+    public static void addBorder(JTextArea orders, JFrame jFrame, Color color, int sizeHeight, int boundsY, int boundsHeight) {
+        Border border = BorderFactory.createLineBorder(color);
+        orders.setBorder(border);
+        orders.setPreferredSize(new Dimension(150, sizeHeight));
+        orders.setBounds(320, boundsY, 150, boundsHeight);
+        jFrame.add(orders);
     }
 }
