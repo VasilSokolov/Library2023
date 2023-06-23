@@ -1,6 +1,6 @@
 package org.enums;
 
-public enum Pizza {
+public enum PizzaType {
 
     MARGARITTA("Margaritta"),
     QUATTRO_FORMAGGI("Quattro Formaggi"),
@@ -9,7 +9,7 @@ public enum Pizza {
 
     private String name;
 
-    Pizza(String name) {
+    PizzaType(String name) {
         this.name = name;
     }
 

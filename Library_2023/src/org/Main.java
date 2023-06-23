@@ -1,6 +1,6 @@
 package org;
 
-import org.enums.Pizza;
+import org.enums.PizzaType;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -29,25 +29,25 @@ public class Main {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JTextArea orders = new JTextArea("Your order: \n");
-//        addBorder(orders, jFrame, Color.RED, 500, 110, 280);
-        Border orderBorder = BorderFactory.createLineBorder(Color.RED);
-        orders.setBorder(orderBorder);
-        orders.setPreferredSize(new Dimension(150, 500));
-        orders.setBounds(320, 110, 150, 280);
-        jFrame.add(orders);
+        addBorder(orders, jFrame, Color.RED, 500, 110, 280);
+//        Border orderBorder = BorderFactory.createLineBorder(Color.RED);
+//        orders.setBorder(orderBorder);
+//        orders.setPreferredSize(new Dimension(150, 500));
+//        orders.setBounds(320, 110, 150, 280);
+//        jFrame.add(orders);
 
         JLabel totalPrice = new JLabel("Total price: " + price + "lv.");
-//        addBorder(totalPrice, jFrame, Color.BLACK, 50, 50, 50);
-        Border border = BorderFactory.createLineBorder(Color.BLACK);
-        totalPrice.setBorder(border);
-        totalPrice.setPreferredSize(new Dimension(150, 50));
-        totalPrice.setBounds(320, 50, 150, 50);
-        jFrame.add(totalPrice);
+        addBorder(totalPrice, jFrame, Color.BLACK, 50, 50, 50);
 
-        printPizza(jFrame, Pizza.MARGARITTA, orders, totalPrice, 30, 50, 7.5);
-        printPizza(jFrame, Pizza.QUATTRO_FORMAGGI, orders, totalPrice, 100, 120, 10.5);
-        printPizza(jFrame, Pizza.CHICKEN, orders, totalPrice, 170, 190, 12.5);
-        printPizza(jFrame, Pizza.PEPERONI, orders, totalPrice, 240, 260, 9.5);
+//        totalPrice.setBorder(border);
+//        totalPrice.setPreferredSize(new Dimension(150, 50));
+//        totalPrice.setBounds(320, 50, 150, 50);
+//        jFrame.add(totalPrice);
+
+        printPizza(jFrame, PizzaType.MARGARITTA, orders, totalPrice, 30, 50, 7.5);
+        printPizza(jFrame, PizzaType.QUATTRO_FORMAGGI, orders, totalPrice, 100, 120, 10.5);
+        printPizza(jFrame, PizzaType.CHICKEN, orders, totalPrice, 170, 190, 12.5);
+        printPizza(jFrame, PizzaType.PEPERONI, orders, totalPrice, 240, 260, 9.5);
 
 //        JLabel margaritta = new JLabel (Pizza.MARGARITTA.getName());
 //        margaritta.setPreferredSize (new Dimension (150, 100));
@@ -138,17 +138,18 @@ public class Main {
 //            }
 //        });
 //        jFrame.add (orderPeperoni);
-
-
         LocalDate dateNow = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E dd-MM-yyyy");
         String formattedDate = dateNow.format(formatter);
+
         JLabel date = new JLabel(formattedDate);
-        date.setBorder(border);
-        date.setPreferredSize(new Dimension(150, 50));
-        date.setBounds(150, 370, 150, 50);
-        jFrame.add(date);
+        addBorder(date, jFrame, Color.BLACK, 50, 370, 50);
         date.setVisible(false);
+//        Border border = BorderFactory.createLineBorder(Color.BLACK);
+//        date.setBorder(border);
+//        date.setPreferredSize(new Dimension(150, 50));
+//        date.setBounds(150, 370, 150, 50);
+//        jFrame.add(date);
 
         JButton purchase = new JButton("Purchase");
         purchase.setBounds(200, 340, 100, 50);
@@ -175,7 +176,7 @@ public class Main {
 
     }
 
-    public static void printPizza(JFrame jFrame, Pizza pizza, JTextArea orders, JLabel totalPrice, int typeY, int orderY, double pizzaPrice) {
+    public static void printPizza(JFrame jFrame, PizzaType pizza, JTextArea orders, JLabel totalPrice, int typeY, int orderY, double pizzaPrice) {
         JLabel pizzaType = new JLabel(pizza.getName());
         pizzaType.setPreferredSize(new Dimension(150, 100));
         pizzaType.setHorizontalAlignment(JLabel.LEFT);
@@ -198,11 +199,13 @@ public class Main {
         jFrame.add(orderPizza);
     }
 
-    public static void addBorder(JTextArea orders, JFrame jFrame, Color color, int sizeHeight, int boundsY, int boundsHeight) {
+    public static void addBorder(JComponent textComponent, JFrame jFrame, Color color, int sizeHeight, int boundsY, int boundsHeight) {
         Border border = BorderFactory.createLineBorder(color);
-        orders.setBorder(border);
-        orders.setPreferredSize(new Dimension(150, sizeHeight));
-        orders.setBounds(320, boundsY, 150, boundsHeight);
-        jFrame.add(orders);
+        textComponent.setBorder(border);
+        textComponent.setPreferredSize(new Dimension(150, sizeHeight));
+        textComponent.setBounds(320, boundsY, 150, boundsHeight);
+        jFrame.add(textComponent);
+
     }
 }
+
