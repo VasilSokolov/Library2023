@@ -15,7 +15,7 @@ public class JavaSwingEnvironmentDemo {
     public static double price = 0;
     private List<String> pizzaList = new ArrayList<String>();
 
-    public static void pizzaMenu() {
+    public void pizzaMenu() {
 
         JFrame jFrame = new JFrame ("Order your pizza");
         jFrame.setLayout (null);

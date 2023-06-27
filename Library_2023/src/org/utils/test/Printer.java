@@ -5,6 +5,7 @@ public class Printer <T>{
     private T print;
 
     public Printer(T print) {
+
         this.print = print;
     }
 
