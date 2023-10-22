@@ -1,6 +1,8 @@
 package org.service;
 
+import org.model.Animal;
+
 public interface AnimalService {
 
-    void save();
+    void save(Animal animal);
 }

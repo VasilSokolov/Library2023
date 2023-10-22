@@ -19,7 +19,7 @@ public class JavaSwingEnvironmentDemo {
 
         JFrame jFrame = new JFrame ("Order your pizza");
         jFrame.setLayout (null);
-        jFrame.setSize (500, 360);
+        jFrame.setSize (500, 500);
         jFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 
         JTextArea orders = new JTextArea ("Your order: \n");

@@ -1,5 +1,6 @@
 package org.service;
 
+import org.model.Animal;
 import org.repository.AnimalRepository;
 
 public class AnimalServiceImpl implements AnimalService {
@@ -9,11 +10,7 @@ public class AnimalServiceImpl implements AnimalService {
 
 
     @Override
-    public void save() {
-
-
-
-
-        animalRepository.save();
+    public void save(Animal animal) {
+        animalRepository.save(animal);
     }
 }
